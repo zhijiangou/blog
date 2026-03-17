@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "music-1",
     "title": "晴天",
     "artist": "周杰伦",
     "album": "叶惠美",
@@ -9,7 +9,7 @@
     "platform": "netease"
   },
   {
-    "id": 2,
+    "id": "music-2",
     "title": "小幸运",
     "artist": "田馥甄",
     "album": "我的少女时代",
@@ -18,7 +18,7 @@
     "platform": "netease"
   },
   {
-    "id": 3,
+    "id": "music-3",
     "title": "夜曲",
     "artist": "周杰伦",
     "album": "十一月的萧邦",

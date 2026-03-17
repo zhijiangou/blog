@@ -1,5 +1,5 @@
 export interface Photo {
-  id: number;
+  id: string;
   title?: string;
   url: string;
   tags: string[];
@@ -24,7 +24,7 @@ export interface Post {
 }
 
 export interface SocialLink {
-  id: number;
+  id: string;
   platform: 'xiaohongshu' | 'weibo';
   title: string;
   url: string;
@@ -32,7 +32,7 @@ export interface SocialLink {
 }
 
 export interface Music {
-  id: number;
+  id: string;
   title: string;
   artist: string;
   album?: string;
