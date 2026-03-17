@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-transparent text-foreground cursor-peony;
+  }
+}
+
+.cursor-peony {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg transform='translate(16,16)'%3E%3Cellipse rx='8' ry='5' fill='%23FFB6C1' opacity='0.9'/%3E%3Cellipse rx='5' ry='8' fill='%23FFB6C1' opacity='0.9'/%3E%3Cellipse rx='7' ry='7' fill='%23FFC0CB' opacity='0.95' transform='rotate(45)'/%3E%3Ccircle r='4' fill='%23FF69B4' opacity='1'/%3E%3Ccircle r='2' fill='%23FF1493'/%3E%3C/g%3E%3C/svg%3E") 16 16, pointer;
+}
+
+.bg-peony-pattern {
+  background-image: 
+    radial-gradient(ellipse at 10% 20%, rgba(255, 182, 193, 0.06) 0%, transparent 55%),
+    radial-gradient(ellipse at 90% 15%, rgba(255, 192, 203, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 30% 85%, rgba(255, 218, 223, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 75%, rgba(255, 228, 225, 0.06) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 45%, rgba(255, 240, 245, 0.05) 0%, transparent 50%);
+  background-size: 100% 100%;
+  background-attachment: fixed;
+}
+
+
+
+

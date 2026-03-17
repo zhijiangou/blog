@@ -1,0 +1,16 @@
+[
+  {
+    "id": "first-post",
+    "title": "第一篇心情",
+    "date": "2024-08-10",
+    "isMood": true,
+    "content": "今天天气真好，心情也跟着晴朗起来了。决定开始记录生活的点滴，希望能坚持下去。"
+  },
+  {
+    "id": "hello-world",
+    "title": "Hello World",
+    "date": "2024-08-01",
+    "isMood": false,
+    "content": "欢迎来到我的个人网站！这里会分享我的照片、心情和喜欢的音乐。"
+  }
+]

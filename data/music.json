@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "title": "晴天",
+    "artist": "周杰伦",
+    "album": "叶惠美",
+    "coverUrl": "https://picsum.photos/200/200?random=20",
+    "url": "https://music.163.com/song/media/outer/url?id=186855",
+    "platform": "netease"
+  },
+  {
+    "id": 2,
+    "title": "小幸运",
+    "artist": "田馥甄",
+    "album": "我的少女时代",
+    "coverUrl": "https://picsum.photos/200/200?random=21",
+    "url": "https://music.163.com/song/media/outer/url?id=32507038",
+    "platform": "netease"
+  },
+  {
+    "id": 3,
+    "title": "夜曲",
+    "artist": "周杰伦",
+    "album": "十一月的萧邦",
+    "coverUrl": "https://picsum.photos/200/200?random=22",
+    "url": "https://music.163.com/song/media/outer/url?id=185808",
+    "platform": "netease"
+  }
+]

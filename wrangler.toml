@@ -1,0 +1,8 @@
+name = "personal-blog"
+compatibility_date = "2024-01-01"
+
+# 部署后在 Cloudflare 创建 D1 数据库后，取消下面的注释并填入您的数据库 ID
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "blog-db"
+# database_id = "请在 Cloudflare 创建 D1 数据库后填入 ID"

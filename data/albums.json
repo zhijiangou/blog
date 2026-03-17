@@ -1,0 +1,69 @@
+[
+  {
+    "id": "summer-2024",
+    "title": "夏日随拍",
+    "description": "2024年夏天的记录",
+    "coverImage": "https://picsum.photos/800/600?random=1",
+    "date": "2024-08-15",
+    "tags": [
+      "风景",
+      "人像",
+      "街拍"
+    ],
+    "photos": [
+      {
+        "id": 1,
+        "title": "日落",
+        "url": "https://picsum.photos/800/600?random=1",
+        "tags": [
+          "风景"
+        ]
+      },
+      {
+        "id": 2,
+        "title": "街角",
+        "url": "https://picsum.photos/800/600?random=2",
+        "tags": [
+          "街拍"
+        ]
+      },
+      {
+        "id": 3,
+        "title": "人像",
+        "url": "https://picsum.photos/800/600?random=3",
+        "tags": [
+          "人像"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "spring-2024",
+    "title": "春日记忆",
+    "description": "春天的故事",
+    "coverImage": "https://picsum.photos/800/600?random=4",
+    "date": "2024-04-20",
+    "tags": [
+      "风景",
+      "花"
+    ],
+    "photos": [
+      {
+        "id": 4,
+        "title": "樱花",
+        "url": "https://picsum.photos/800/600?random=4",
+        "tags": [
+          "花"
+        ]
+      },
+      {
+        "id": 5,
+        "title": "公园",
+        "url": "https://picsum.photos/800/600?random=5",
+        "tags": [
+          "风景"
+        ]
+      }
+    ]
+  }
+]

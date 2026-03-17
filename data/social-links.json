@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "platform": "xiaohongshu",
+    "title": "鲜奇的小红书",
+    "url": "https://xiaohongshu.com",
+    "thumbnailUrl": "https://picsum.photos/400/300?random=10"
+  },
+  {
+    "id": 2,
+    "platform": "weibo",
+    "title": "鲜奇的微博",
+    "url": "https://weibo.com",
+    "thumbnailUrl": "https://picsum.photos/400/300?random=11"
+  }
+]
