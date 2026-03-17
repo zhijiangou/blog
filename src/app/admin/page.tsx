@@ -187,44 +187,36 @@ export default function AdminPage() {
       socialLinks
     };
     
-    const blob = new Blob([JSON.stringify(data.albums, null, 2)], { type: 'application/json' });
-    const url1 = URL.createObjectURL(blob);
-    const a1 = document.createElement('a');
-    a1.href = url1;
-    a1.download = 'albums.json';
-    a1.click();
-    URL.revokeObjectURL(url1);
+    const files = [
+      { name: 'albums.json', content: data.albums },
+      { name: 'posts.json', content: data.posts },
+      { name: 'music.json', content: data.music },
+      { name: 'social-links.json', content: data.socialLinks }
+    ];
     
-    const blob2 = new Blob([JSON.stringify(data.posts, null, 2)], { type: 'application/json' });
-    const url2 = URL.createObjectURL(blob2);
-    const a2 = document.createElement('a');
-    a2.href = url2;
-    a2.download = 'posts.json';
-    a2.click();
-    URL.revokeObjectURL(url2);
+    files.forEach((file, index) => {
+      setTimeout(() => {
+        const blob = new Blob([JSON.stringify(file.content, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = file.name;
+        a.click();
+        URL.revokeObjectURL(url);
+      }, index * 500);
+    });
     
-    const blob3 = new Blob([JSON.stringify(data.music, null, 2)], { type: 'application/json' });
-    const url3 = URL.createObjectURL(blob3);
-    const a3 = document.createElement('a');
-    a3.href = url3;
-    a3.download = 'music.json';
-    a3.click();
-    URL.revokeObjectURL(url3);
-    
-    const blob4 = new Blob([JSON.stringify(data.socialLinks, null, 2)], { type: 'application/json' });
-    const url4 = URL.createObjectURL(blob4);
-    const a4 = document.createElement('a');
-    a4.href = url4;
-    a4.download = 'social-links.json';
-    a4.click();
-    URL.revokeObjectURL(url4);
-    
-    alert('数据已下载！请将 JSON 文件替换到项目的 data/ 目录，然后提交到 GitHub。');
+    setTimeout(() => {
+      alert('数据已下载！请将下载的 4 个 JSON 文件替换到项目的 data/ 目录，然后提交到 GitHub。');
+    }, files.length * 500 + 200);
   };
 
   const openEditForm = (item: any) => {
     setEditingId(item.id);
-    setFormData(item);
+    setFormData({
+      ...item,
+      tags: item.tags ? item.tags.join(', ') : ''
+    });
     setShowForm(true);
   };
 
@@ -288,7 +280,10 @@ export default function AdminPage() {
 
   const openPhotoEditForm = (photo: Photo) => {
     setEditingPhotoId(photo.id);
-    setPhotoFormData(photo);
+    setPhotoFormData({
+      ...photo,
+      tags: photo.tags ? photo.tags.join(', ') : ''
+    });
     setShowPhotoForm(true);
   };
 
@@ -394,8 +389,8 @@ export default function AdminPage() {
                       <img src={photo.url} alt={photo.title || '照片'} className="w-full h-48 object-cover" />
                       <div className="p-4">
                         <h3 className="font-medium text-gray-800">{photo.title || '无标题'}</h3>
-                        {photo.tags.length > 0 && (
-                          <p className="text-sm text-gray-500 mt-1">{photo.tags.join(', ')}</p>
+                        {photo.tags && photo.tags.length > 0 && (
+                          <p className="text-sm text-gray-500 mt-1">{(photo.tags || []).join(', ')}</p>
                         )}
                         <div className="flex gap-2 mt-3">
                           <button
@@ -450,7 +445,7 @@ export default function AdminPage() {
                       <label className="block text-sm font-medium text-gray-700 mb-1">标签（用逗号分隔）</label>
                       <input
                         type="text"
-                        value={photoFormData.tags?.join(', ') || ''}
+                        value={photoFormData.tags || ''}
                         onChange={(e) => setPhotoFormData({ ...photoFormData, tags: e.target.value })}
                         className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
                         placeholder="风景, 日落, 海边"
@@ -499,7 +494,7 @@ export default function AdminPage() {
                     )}
                     <div className="flex-1">
                       <h3 className="font-medium text-gray-800">{album.title}</h3>
-                      <p className="text-sm text-gray-500">{album.date} · {album.tags.join(', ')} · {album.photos.length} 张照片</p>
+                      <p className="text-sm text-gray-500">{album.date} · {(album.tags || []).join(', ')} · {album.photos.length} 张照片</p>
                     </div>
                     <button
                       onClick={() => setManagingAlbumId(album.id)}
@@ -663,7 +658,7 @@ export default function AdminPage() {
                       <label className="block text-sm font-medium text-gray-700 mb-1">标签（用逗号分隔）</label>
                       <input
                         type="text"
-                        value={formData.tags?.join(', ') || ''}
+                        value={formData.tags || ''}
                         onChange={(e) => setFormData({ ...formData, tags: e.target.value })}
                         className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
                         placeholder="风景, 旅行, 日常"
