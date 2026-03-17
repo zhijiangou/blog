@@ -202,7 +202,7 @@ export default function Home() {
 
       <footer className="py-6 px-6 border-t border-pink-100 bg-white/80 relative z-10">
         <div className="max-w-6xl mx-auto text-center text-gray-500">
-          <p>© 2024 我的个人网站</p>
+          <p>© 2024 Every Day is New</p>
         </div>
       </footer>
     </main>

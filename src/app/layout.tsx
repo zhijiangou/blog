@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "我的个人网站",
+  title: "Every Day is New",
   description: "记录生活与分享",
 };
 
