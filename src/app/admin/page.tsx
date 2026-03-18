@@ -22,7 +22,12 @@ export default function AdminPage() {
   const [editingPhotoId, setEditingPhotoId] = useState<string | null>(null);
   const [photoFormData, setPhotoFormData] = useState<any>({});
 
-  const generateId = () => Date.now().toString();
+  let idCounter = 0;
+  const generateId = () => {
+    const now = Date.now();
+    idCounter++;
+    return `${now}-${idCounter}`;
+  };
 
   const handleAddAlbum = () => {
     const newAlbum: Album = {

@@ -12,7 +12,17 @@ interface PhotoWithAlbum extends Photo {
   albumTitle: string;
   albumDescription?: string;
   albumDate: string;
+  albumTags: string[];
 }
+
+const shuffleArray = <T,>(array: T[]): T[] => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
 
 export default function Home() {
   const albums = albumsData as Album[];
@@ -20,16 +30,7 @@ export default function Home() {
   const socialLinks = socialLinksData as SocialLink[];
   const latestPost = posts[0];
   const [showNav, setShowNav] = useState(false);
-
-  const allPhotos: PhotoWithAlbum[] = albums.flatMap(album => 
-    album.photos.map(photo => ({
-      ...photo,
-      albumId: album.id,
-      albumTitle: album.title,
-      albumDescription: album.description,
-      albumDate: album.date
-    }))
-  );
+  const [shuffledAlbums] = useState(() => shuffleArray(albums));
 
   useEffect(() => {
     const handleScroll = () => {
@@ -78,33 +79,30 @@ export default function Home() {
         <div className="max-w-6xl mx-auto space-y-16">
           <section>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-              {allPhotos.map((photo, index) => (
+              {shuffledAlbums.map((album) => (
                 <Link
-                  key={`${photo.albumId}-${photo.id}`}
-                  href={`/albums/${photo.albumId}`}
+                  key={album.id}
+                  href={`/albums/${album.id}`}
                   className="group block"
                 >
                   <div className="relative rounded-xl overflow-hidden mb-3 border border-pink-100 bg-white shadow-sm aspect-[3/4]">
                     <img
-                      src={photo.url}
-                      alt={photo.title || photo.albumTitle}
+                      src={album.coverImage}
+                      alt={album.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                   <div className="space-y-1">
                     <h3 className="font-semibold text-sm group-hover:text-pink-500 transition-colors text-gray-700">
-                      {photo.title || photo.albumTitle}
+                      {album.title}
                     </h3>
                     <p className="text-xs text-gray-500">
-                      {photo.albumDate}
+                      {album.date}
                     </p>
                     <div className="flex items-center gap-2">
-                      <span className="text-xs bg-pink-100 text-pink-700 px-2 py-0.5 rounded-full">
-                        {photo.albumTitle}
-                      </span>
-                      {photo.tags.slice(0, 2).map(tag => (
-                        <span key={tag} className="text-xs text-gray-500">
-                          #{tag}
+                      {album.tags.slice(0, 2).map(tag => (
+                        <span key={tag} className="text-xs bg-pink-100 text-pink-700 px-2 py-0.5 rounded-full">
+                          {tag}
                         </span>
                       ))}
                     </div>
