@@ -30,9 +30,13 @@ export default function Home() {
   const socialLinks = socialLinksData as SocialLink[];
   const latestPost = posts[0];
   const [showNav, setShowNav] = useState(false);
-  const [shuffledAlbums] = useState(() => shuffleArray(albums));
+  const [displayAlbums, setDisplayAlbums] = useState<Album[]>(albums);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+    setDisplayAlbums(shuffleArray(albums));
+    
     const handleScroll = () => {
       const header = document.querySelector('header');
       if (header) {
@@ -43,7 +47,7 @@ export default function Home() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [albums]);
 
   return (
     <main className="min-h-screen flex flex-col relative" style={{ backgroundImage: 'url(https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=peony%20flowers%20border%20frame%2C%20white%20center%20space%20for%20text%2C%20elegant%20watercolor%20style%2C%20pink%20peonies%2C%20empty%20middle%20area%2C%20decorative%20floral%20border&image_size=landscape_16_9)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed' }}>
@@ -79,7 +83,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto space-y-16">
           <section>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-              {shuffledAlbums.map((album) => (
+              {displayAlbums.map((album) => (
                 <Link
                   key={album.id}
                   href={`/albums/${album.id}`}
