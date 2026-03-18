@@ -226,15 +226,21 @@ export default function AdminPage() {
 
   const handleAddPhoto = () => {
     if (!managingAlbumId) return;
-    const newPhoto: Photo = {
+    const urls = (photoFormData.url || '')
+      .split('\n')
+      .map(url => url.trim())
+      .filter(url => url.length > 0);
+    
+    const newPhotos: Photo[] = urls.map(url => ({
       id: generateId(),
-      title: photoFormData.title || '',
-      url: photoFormData.url || '',
-      tags: (photoFormData.tags || '').split(',').map((t: string) => t.trim()).filter(Boolean)
-    };
+      title: '',
+      url: url,
+      tags: []
+    }));
+    
     setAlbums(albums.map(album => {
       if (album.id === managingAlbumId) {
-        return { ...album, photos: [newPhoto, ...album.photos] };
+        return { ...album, photos: [...newPhotos, ...album.photos] };
       }
       return album;
     }));
@@ -420,38 +426,56 @@ export default function AdminPage() {
                   <h3 className="text-xl font-semibold text-gray-800 mb-6">
                     {editingPhotoId ? '编辑照片' : '添加照片'}
                   </h3>
-                  <div className="space-y-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">图片 URL *</label>
-                      <input
-                        type="text"
-                        value={photoFormData.url || ''}
-                        onChange={(e) => setPhotoFormData({ ...photoFormData, url: e.target.value })}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
-                        placeholder="https://example.com/photo.jpg"
-                      />
+                  {editingPhotoId ? (
+                    <div className="space-y-4">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">图片 URL *</label>
+                        <input
+                          type="text"
+                          value={photoFormData.url || ''}
+                          onChange={(e) => setPhotoFormData({ ...photoFormData, url: e.target.value })}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+                          placeholder="https://example.com/photo.jpg"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">标题</label>
+                        <input
+                          type="text"
+                          value={photoFormData.title || ''}
+                          onChange={(e) => setPhotoFormData({ ...photoFormData, title: e.target.value })}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+                          placeholder="输入照片标题"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">标签（用逗号分隔）</label>
+                        <input
+                          type="text"
+                          value={photoFormData.tags || ''}
+                          onChange={(e) => setPhotoFormData({ ...photoFormData, tags: e.target.value })}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+                          placeholder="风景, 日落, 海边"
+                        />
+                      </div>
                     </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">标题</label>
-                      <input
-                        type="text"
-                        value={photoFormData.title || ''}
-                        onChange={(e) => setPhotoFormData({ ...photoFormData, title: e.target.value })}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
-                        placeholder="输入照片标题"
-                      />
+                  ) : (
+                    <div className="space-y-4">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">图片 URL（每行一个，可同时添加多张）*</label>
+                        <textarea
+                          value={photoFormData.url || ''}
+                          onChange={(e) => setPhotoFormData({ ...photoFormData, url: e.target.value })}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+                          rows={6}
+                          placeholder="https://example.com/photo1.jpg
+https://example.com/photo2.jpg
+https://example.com/photo3.jpg"
+                        />
+                        <p className="text-xs text-gray-500 mt-1">每行输入一个图片链接，会一次性添加多张照片</p>
+                      </div>
                     </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">标签（用逗号分隔）</label>
-                      <input
-                        type="text"
-                        value={photoFormData.tags || ''}
-                        onChange={(e) => setPhotoFormData({ ...photoFormData, tags: e.target.value })}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
-                        placeholder="风景, 日落, 海边"
-                      />
-                    </div>
-                  </div>
+                  )}
                   <div className="flex gap-3 mt-8">
                     <button
                       onClick={() => { setShowPhotoForm(false); setEditingPhotoId(null); setPhotoFormData({}); }}
