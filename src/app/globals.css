@@ -53,13 +53,20 @@
   * {
     @apply border-border;
   }
+  body, a, button, input, textarea, select, label {
+    @apply cursor-peony;
+  }
   body {
-    @apply bg-transparent text-foreground cursor-peony;
+    @apply bg-transparent text-foreground;
   }
 }
 
 .cursor-peony {
   cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg transform='translate(16,16)'%3E%3Cellipse rx='8' ry='5' fill='%23FFB6C1' opacity='0.9'/%3E%3Cellipse rx='5' ry='8' fill='%23FFB6C1' opacity='0.9'/%3E%3Cellipse rx='7' ry='7' fill='%23FFC0CB' opacity='0.95' transform='rotate(45)'/%3E%3Ccircle r='4' fill='%23FF69B4' opacity='1'/%3E%3Ccircle r='2' fill='%23FF1493'/%3E%3C/g%3E%3C/svg%3E") 16 16, pointer;
+}
+
+a, button, input, textarea, select, label, [role='button'], [onclick] {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg transform='translate(16,16)'%3E%3Cellipse rx='8' ry='5' fill='%23FFB6C1' opacity='0.9'/%3E%3Cellipse rx='5' ry='8' fill='%23FFB6C1' opacity='0.9'/%3E%3Cellipse rx='7' ry='7' fill='%23FFC0CB' opacity='0.95' transform='rotate(45)'/%3E%3Ccircle r='4' fill='%23FF69B4' opacity='1'/%3E%3Ccircle r='2' fill='%23FF1493'/%3E%3C/g%3E%3C/svg%3E") 16 16, pointer !important;
 }
 
 .bg-peony-pattern {
