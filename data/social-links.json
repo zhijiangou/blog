@@ -2,15 +2,15 @@
   {
     "id": "social-1",
     "platform": "xiaohongshu",
-    "title": "鲜奇的小红书",
-    "url": "https://xiaohongshu.com",
-    "thumbnailUrl": "https://picsum.photos/400/300?random=10"
+    "title": "鲜奇",
+    "url": "https://www.xiaohongshu.com/user/profile/5b15e150e8ac2b48be6b0340",
+    "thumbnailUrl": "https://pub-298310a1338149ef9522b1fa1f3c66f6.r2.dev/1redbook-font/redboojfont.jpg"
   },
   {
     "id": "social-2",
     "platform": "weibo",
-    "title": "鲜奇的微博",
-    "url": "https://weibo.com",
-    "thumbnailUrl": "https://picsum.photos/400/300?random=11"
+    "title": "鲜奇爱美丽",
+    "url": "https://weibo.com/u/1728158407",
+    "thumbnailUrl": "https://pub-298310a1338149ef9522b1fa1f3c66f6.r2.dev/1weibo-font/weibofont.jpg"
   }
 ]

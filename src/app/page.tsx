@@ -28,7 +28,7 @@ export default function Home() {
   const albums = albumsData as Album[];
   const posts = postsData as Post[];
   const socialLinks = socialLinksData as SocialLink[];
-  const latestPost = posts[0];
+  const latestPosts = posts.slice(0, 3);
   const [showNav, setShowNav] = useState(false);
   const [displayAlbums, setDisplayAlbums] = useState<Album[]>(albums);
   const [mounted, setMounted] = useState(false);
@@ -103,8 +103,8 @@ export default function Home() {
                     <p className="text-xs text-gray-500">
                       {album.date}
                     </p>
-                    <div className="flex items-center gap-2">
-                      {album.tags.slice(0, 2).map(tag => (
+                    <div className="flex items-center gap-2 flex-wrap">
+                      {album.tags.slice(0, 4).map(tag => (
                         <span key={tag} className="text-xs bg-pink-100 text-pink-700 px-2 py-0.5 rounded-full">
                           {tag}
                         </span>
@@ -121,21 +121,24 @@ export default function Home() {
               <h2 className="text-2xl font-bold text-gray-800">最新心情</h2>
               <Link href="/posts" className="text-pink-500 hover:underline">查看全部 →</Link>
             </div>
-            {latestPost && (
-              <Link href={`/posts/${latestPost.id}`} className="group block p-6 border border-pink-100 bg-white rounded-lg hover:shadow-lg transition-shadow">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className={`px-2 py-1 text-xs rounded ${
-                    latestPost.isMood ? 'bg-pink-100 text-pink-700' : 'bg-gray-100 text-gray-700'
-                  }`}>
-                    {latestPost.isMood ? '心情' : '博客'}
-                  </span>
-                </div>
-                {latestPost.title && (
-                  <h3 className="text-xl font-semibold mb-3 group-hover:text-pink-500 transition-colors text-gray-800">{latestPost.title}</h3>
-                )}
-                <p className="text-gray-600 line-clamp-3">{latestPost.content}</p>
-              </Link>
-            )}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {latestPosts.map((post) => (
+                <Link key={post.id} href={`/posts/${post.id}`} className="group block p-6 border border-pink-100 bg-white rounded-lg hover:shadow-lg transition-shadow">
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className={`px-2 py-1 text-xs rounded ${
+                      post.isMood ? 'bg-pink-100 text-pink-700' : 'bg-gray-100 text-gray-700'
+                    }`}>
+                      {post.isMood ? '心情' : '博客'}
+                    </span>
+                  </div>
+                  {post.title && (
+                    <h3 className="text-xl font-semibold mb-2 group-hover:text-pink-500 transition-colors text-gray-800">{post.title}</h3>
+                  )}
+                  <p className="text-xs text-gray-400 mb-3">{post.date}</p>
+                  <p className="text-gray-600 line-clamp-3">{post.content}</p>
+                </Link>
+              ))}
+            </div>
           </section>
 
           <section>

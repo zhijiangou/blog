@@ -80,6 +80,16 @@ a, button, input, textarea, select, label, [role='button'], [onclick] {
   background-attachment: fixed;
 }
 
+* {
+  cursor: url('/peony.png') 32 32, pointer !important;
+}
 
+*:hover {
+  cursor: url('/peony.png') 32 32, pointer !important;
+}
+
+a, button, input, textarea, select, label, [role='button'], [onclick] {
+  cursor: url('/peony.png') 32 32, pointer !important;
+}
 
 
