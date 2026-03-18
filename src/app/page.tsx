@@ -11,6 +11,7 @@ interface PhotoWithAlbum extends Photo {
   albumId: string;
   albumTitle: string;
   albumDescription?: string;
+  albumDate: string;
 }
 
 export default function Home() {
@@ -25,7 +26,8 @@ export default function Home() {
       ...photo,
       albumId: album.id,
       albumTitle: album.title,
-      albumDescription: album.description
+      albumDescription: album.description,
+      albumDate: album.date
     }))
   );
 
@@ -93,11 +95,9 @@ export default function Home() {
                     <h3 className="font-semibold text-sm group-hover:text-pink-500 transition-colors text-gray-700">
                       {photo.title || photo.albumTitle}
                     </h3>
-                    {photo.albumDescription && (
-                      <p className="text-xs text-gray-500 line-clamp-2">
-                        {photo.albumDescription}
-                      </p>
-                    )}
+                    <p className="text-xs text-gray-500">
+                      {photo.albumDate}
+                    </p>
                     <div className="flex items-center gap-2">
                       <span className="text-xs bg-pink-100 text-pink-700 px-2 py-0.5 rounded-full">
                         {photo.albumTitle}
