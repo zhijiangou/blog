@@ -166,11 +166,11 @@ export default function Home() {
                       <span className="text-lg">
                         {link.platform === 'xiaohongshu' ? (
                           <div className="w-7 h-7 rounded overflow-hidden flex items-center justify-center bg-gray-100">
-                            <img src="/redbook.jpg" alt="小红书" className="w-full h-full object-cover" />
+                            <img src="/redbook.png" alt="小红书" className="w-full h-full object-cover" />
                           </div>
                         ) : (
                           <div className="w-7 h-7 rounded overflow-hidden flex items-center justify-center bg-gray-100">
-                            <img src="/weibo.jpeg" alt="微博" className="w-full h-full object-cover" />
+                            <img src="/weibo.png" alt="微博" className="w-full h-full object-cover" />
                           </div>
                         )}
                       </span>
